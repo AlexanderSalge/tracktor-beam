@@ -94,6 +94,7 @@ private:
 	float _param_target_timeout = {};
 	float _param_delta_position = {};
 	float _param_delta_velocity = {};
+	double _param_max_radius = {};
 
 	float _vel_x_integral {};
 	float _vel_y_integral {};
