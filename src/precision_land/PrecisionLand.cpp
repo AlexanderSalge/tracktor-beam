@@ -39,6 +39,7 @@ void PrecisionLand::loadParameters()
 	_node.declare_parameter<float>("target_timeout", 3.0);
 	_node.declare_parameter<float>("delta_position", 0.25);
 	_node.declare_parameter<float>("delta_velocity", 0.25);
+	_node.declare_parameter<float>("max_radius", 2);
 
 	_node.get_parameter("descent_vel", _param_descent_vel);
 	_node.get_parameter("vel_p_gain", _param_vel_p_gain);
@@ -47,6 +48,7 @@ void PrecisionLand::loadParameters()
 	_node.get_parameter("target_timeout", _param_target_timeout);
 	_node.get_parameter("delta_position", _param_delta_position);
 	_node.get_parameter("delta_velocity", _param_delta_velocity);
+	_node.get_parameter("max_radius", _param_max_radius);
 
 	RCLCPP_INFO(_node.get_logger(), "descent_vel: %f", _param_descent_vel);
 	RCLCPP_INFO(_node.get_logger(), "vel_i_gain: %f", _param_vel_i_gain);
@@ -260,7 +262,7 @@ void PrecisionLand::generateSearchWaypoints()
 	double current_z = _vehicle_local_position->positionNed().z();
 	auto min_z = -1.0;
 
-	double max_radius = 2.0;
+	double max_radius = _param_max_radius;
 	double layer_spacing = 0.5;
 	int points_per_layer = 16;
 	std::vector<Eigen::Vector3f> waypoints;
