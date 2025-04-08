@@ -39,7 +39,7 @@ void PrecisionLand::loadParameters()
 	_node.declare_parameter<float>("target_timeout", 3.0);
 	_node.declare_parameter<float>("delta_position", 0.25);
 	_node.declare_parameter<float>("delta_velocity", 0.25);
-	_node.declare_parameter<float>("max_radius", 2);
+	_node.declare_parameter<double>("max_radius", 2);
 
 	_node.get_parameter("descent_vel", _param_descent_vel);
 	_node.get_parameter("vel_p_gain", _param_vel_p_gain);
