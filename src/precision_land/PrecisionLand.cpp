@@ -280,7 +280,7 @@ void PrecisionLand::generateSearchWaypoints()
 		double radius = 0.0;
 
 		for (int point = 0; point < points_per_layer + 1; ++point) {
-			double angle = 2.0 * M_PI * point / points_per_layer;
+			double angle = 4.0 * M_PI * point / points_per_layer;
 			double x = start_x + radius * cos(angle);
 			double y = start_y + radius * sin(angle);
 			double z = current_z;
