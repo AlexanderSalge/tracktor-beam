@@ -190,7 +190,8 @@ void PrecisionLand::updateSetpoint(float dt_s)
 
 		// Descend using velocity setpoints and P velocity controller for XY
 		Eigen::Vector2f vel = calculateVelocitySetpointXY();
-		_trajectory_setpoint->update(Eigen::Vector3f(vel.x(), vel.y(), _param_descent_vel), std::nullopt, px4_ros2::quaternionToYaw(_tag.orientation));
+		_trajectory_setpoint->update(Eigen::Vector3f(vel.x(), vel.y(), _param_descent_vel), std::nullopt, std::nullopt);
+
 		if (_land_detected) {
 			switchToState(State::Finished);
 		}
