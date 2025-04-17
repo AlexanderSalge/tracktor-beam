@@ -16,6 +16,7 @@ ArucoTrackerNode::ArucoTrackerNode()
 	_detector = std::make_unique<cv::aruco::ArucoDetector>(dictionary, detectorParams);
 
 	auto qos = rclcpp::QoS(1).best_effort();
+	auto qos_reliable = rclcpp::QoS(1).reliable();
 
 	_image_sub = create_subscription<sensor_msgs::msg::Image>(
 			     "/camera", qos, std::bind(&ArucoTrackerNode::image_callback, this, std::placeholders::_1));
@@ -24,7 +25,7 @@ ArucoTrackerNode::ArucoTrackerNode()
 				   "/camera_info", qos, std::bind(&ArucoTrackerNode::camera_info_callback, this, std::placeholders::_1));
 
 	// Publishers
-	_image_pub = create_publisher<sensor_msgs::msg::Image>("/image_proc", qos);
+	_image_pub = create_publisher<sensor_msgs::msg::Image>("/image_proc", qos_reliable);
 	_target_pose_pub = create_publisher<geometry_msgs::msg::PoseStamped>("/target_pose", qos);
 }
 
