@@ -51,7 +51,13 @@ void PrecisionLand::loadParameters()
 	_node.get_parameter("max_radius", _param_max_radius);
 
 	RCLCPP_INFO(_node.get_logger(), "descent_vel: %f", _param_descent_vel);
+	RCLCPP_INFO(_node.get_logger(), "vel_p_gain: %f", _param_vel_p_gain);
 	RCLCPP_INFO(_node.get_logger(), "vel_i_gain: %f", _param_vel_i_gain);
+	RCLCPP_INFO(_node.get_logger(), "max_velocity: %f", _param_max_velocity);
+	RCLCPP_INFO(_node.get_logger(), "target_timeout: %f", _param_target_timeout);
+	RCLCPP_INFO(_node.get_logger(), "delta_position: %f", _param_delta_position);
+	RCLCPP_INFO(_node.get_logger(), "delta_velocity: %f", _param_delta_velocity);
+	RCLCPP_INFO(_node.get_logger(), "max_radius: %f", _param_max_radius);
 }
 
 void PrecisionLand::vehicleLandDetectedCallback(const px4_msgs::msg::VehicleLandDetected::SharedPtr msg)
